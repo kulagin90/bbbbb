@@ -25,15 +25,17 @@ def get_url():
 
 def poisk():
     for card in get_url():
-        sleep(2)
+        #sleep(2)
         res = requests.get(card, headers=headers)
 
         soup = BeautifulSoup(res.text, 'html.parser')
         cars = soup.find('div', class_='card')
-        name = cars.find('h1', class_='card__title').text
-        params = cars.find('div', class_='card__params').text
-        price = cars.find('div', class_='card__price').text
-        location = cars.find('div', class_='card__location').text
+        #name = cars.find('h1', class_='card__title').text
+        #params = cars.find('div', class_='card__params').text
+       #price = cars.find('div', class_='card__price').text
+        #location = cars.find('div', class_='card__location').text
         foto = cars.find('img').get('data-src')
 
-        yield name, params, price, location, foto, card
+        yield card, foto
+
+
